@@ -45,4 +45,5 @@ article {
     border-bottom: #2a5468 solid 1px;
     margin: 20px 0;
     padding-bottom: 20px;
+    min-height: 200px;
 }

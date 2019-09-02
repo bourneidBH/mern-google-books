@@ -4,11 +4,13 @@ import Jumbotron from "../components/Jumbotron";
 import BookResult from "../components/BookResult";
 
 class Saved extends React.Component {
-    state = {books: []};
+  state = {
+    books: [],
+  };
 
   // Method to Query the API/Database to GET all the books in the database.
-  loadBookshelf = () => {
-    API.getBookshelf()
+  loadSavedBooks = () => {
+    API.getSavedBooks()
       .then(res => this.setState({books: res.data}))
       .catch(err => console.log(err))
   };
@@ -16,13 +18,13 @@ class Saved extends React.Component {
   // Method to DELETE a particular book from the database.
   deleteBook = event => {
     API.deleteBook(event.target.id)
-      .then(res => this.loadBookshelf())
+      .then(res => this.loadSavedBooks())
       .catch(err => console.log(err))
   };
 
-  // Lifecycle Method runs the 'loadBookshelf' method when component mounts.
+  // Lifecycle Method runs the 'loadSavedBooks' method when component mounts.
   componentDidMount() {
-    this.loadBookshelf()
+    this.loadSavedBooks()
   };
 
   render() {
@@ -32,11 +34,21 @@ class Saved extends React.Component {
           heading="Saved books"
           subhead="View or delete saved books"
         />
-        <BookResult
-          books={this.state.books}
-          onClick={this.deleteBook}
-          buttonText="Delete"
-        />
+        {this.state.books.map(book => (
+            <div className="container" key={book.id ? book.id : book.googleBookId}>
+              <BookResult 
+                id={book.volumeInfo.id}
+                title={book.volumeInfo.title}
+                authors={book.volumeInfo.authors}
+                description={book.volumeInfo.description}
+                image={book.volumeInfo.imageLinks.thumbnail}
+                link={book.volumeInfo.infoLink}
+                onClick={this.deleteBook(book.id)}
+                buttonText="Delete"
+              />
+            </div>
+
+          ))}
       </div>
     );
   };
