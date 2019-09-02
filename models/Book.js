@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Book = new Schema({
+    googleBookId: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
@@ -19,8 +23,12 @@ const Book = new Schema({
     link: {
         type: String,
         required: true
+    },
+    saved: {
+        type: Boolean,
+        default: false
     }
 
 });
 
-export default Book;
+module.exports = Book;
