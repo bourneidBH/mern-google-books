@@ -11,7 +11,7 @@ class Search extends React.Component {
   };
 
   handleInputChange = event => {
-    this.setState({search: event.target.value})
+    this.setState({search: event.target.value});
   };
 
   saveBook = bookID => {
@@ -26,29 +26,38 @@ class Search extends React.Component {
       saved: true
     }).then(() => {
       this.setState({
-        books: this.state.books.filter(book => book.id !== bookID)
+        books: this.state.books.filter(book => book.saved === true)
       });
     }).catch(err => console.log(err));
   };
 
-
-  showBooks = data => {
-    this.setState({ books: data.data.items });
+  // Method to Query the database to GET all the books in the database.
+  loadSavedBooks = () => {
+    API.getSavedBooks()
+      .then(res => {
+        this.setState({books: res.data});
+        console.log("saved books: ", res.data);
+      })
+      .catch(err => console.log(err))
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
 
     API.getGoogleBooks(this.state.search)
-    .then(results => this.showBooks(results))
+    .then( results => {
+      this.setState({ books: results.data.items });
+      console.log({books: results.data.items});
+    })
+    // .then( this.loadSavedBooks() )
     .catch(err => console.log(err));
-  }
+  };
 
   render() {
     return (
       <div>
         <Jumbotron 
-          heading="Book Search"
+          heading="Google Books"
           subhead="Search for and save titles to a reading list"
         />
         <h3 className="blue-text centered">Book Search</h3>
@@ -57,21 +66,32 @@ class Search extends React.Component {
           handleFormSubmit={this.handleFormSubmit}
         />
         
-          {this.state.books.map(book => (
-            <div className="container" key={book.id ? book.id : book.googleBookId}>
-              <BookResult 
-                id={book.id}
-                title={book.volumeInfo.title}
-                authors={book.volumeInfo.authors}
-                description={book.volumeInfo.description}
-                image={book.volumeInfo.imageLinks.thumbnail}
-                link={book.volumeInfo.infoLink}
-                onClick={this.saveBook(book.id)}
-                buttonText="Save"
-              />
-            </div>
+        {this.state.books.map(book => (
+          <div className="container" key={book.id ? book.id : book.googleBookId}>
+            <BookResult 
+              id={book.id}
+              title={book.volumeInfo.title}
+              authors={book.volumeInfo.authors}
+              description={book.volumeInfo.description}
+              image={book.volumeInfo.imageLinks.thumbnail}
+              link={book.volumeInfo.infoLink}
+              onClick={this.saveBook(book.id)}
+              buttonText="Save"
+            />
+            {/* <BookResult 
+              id={book.id}
+              title={book.title}
+              authors={book.authors}
+              description={book.description}
+              image={book.image}
+              link={book.link}
+              onClick={this.saveBook(book.id)}
+              buttonText="Save"
+            /> */}
 
-          ))}
+          </div>
+
+        ))}
       </div>
 
     );

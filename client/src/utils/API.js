@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export default {
   // get book data from api
-  getGoogleBooks: (bookTitle) => {
-    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=title:${bookTitle}`)
+  getGoogleBooks: search => {
+    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=title:${search}&max-results=10`);
   },
 
   // save book to database
-  saveBook: (bookData) => {
+  saveBook: bookData => {
     return axios.post('/api/books', bookData);
   },
 
@@ -17,12 +17,12 @@ export default {
   },
 
   //get specific saved book by id
-  getBook: (id) => {
+  getBook: id => {
     return axios.get(`/api/books/${id}`)
   },
 
   // delete specific book id book from saved books
-  deleteBook: (id) => {
+  deleteBook: id => {
     return axios.delete(`/api/books/${id}`)
   }
 };

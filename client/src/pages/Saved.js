@@ -16,8 +16,8 @@ class Saved extends React.Component {
   };
 
   // Method to DELETE a particular book from the database.
-  deleteBook = event => {
-    API.deleteBook(event.target.id)
+  deleteBook = id => {
+    API.deleteBook(id)
       .then(res => this.loadSavedBooks())
       .catch(err => console.log(err))
   };
@@ -37,12 +37,12 @@ class Saved extends React.Component {
         {this.state.books.map(book => (
             <div className="container" key={book.id ? book.id : book.googleBookId}>
               <BookResult 
-                id={book.volumeInfo.id}
-                title={book.volumeInfo.title}
-                authors={book.volumeInfo.authors}
-                description={book.volumeInfo.description}
-                image={book.volumeInfo.imageLinks.thumbnail}
-                link={book.volumeInfo.infoLink}
+                id={book._id}
+                title={book.title}
+                authors={book.authors}
+                description={book.description}
+                image={book.image}
+                link={book.link}
                 onClick={this.deleteBook(book.id)}
                 buttonText="Delete"
               />

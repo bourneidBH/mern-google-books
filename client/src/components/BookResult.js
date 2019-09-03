@@ -7,7 +7,6 @@ function BookResult(props) {
     return (
 
         <article id={id}>
-
             <img src={image} alt={title} className="thumbnail" />
             <h5>{title}</h5>
             <p>By: {authors}</p>
@@ -20,6 +19,6 @@ function BookResult(props) {
             >{buttonText}</button>
 
         </article>
-        )}
+    )}
 
 export default BookResult;

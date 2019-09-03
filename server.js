@@ -14,11 +14,11 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-// Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/googlebooks", 
-  { useNewUrlParser: true }
-);
+// If deployed, use the deployed database. Otherwise use the local database
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/googleBooks";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
 
 // Start the API server
 app.listen(PORT, function() {
