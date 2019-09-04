@@ -26,7 +26,7 @@ class Search extends React.Component {
       saved: true
     }).then(() => {
       this.setState({
-        books: this.state.books.filter(book => book.saved === true)
+        books: this.state.books.filter(book => book.id !== bookID)
       });
     }).catch(err => console.log(err));
   };
