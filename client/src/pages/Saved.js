@@ -35,7 +35,7 @@ class Saved extends React.Component {
           subhead="View or delete saved books"
         />
         {this.state.books.map(book => (
-            <div className="container" key={book.id ? book.id : book.googleBookId}>
+            <div className="container" key={book.id ? book._id : book.googleBookId}>
               <BookResult 
                 id={book._id}
                 title={book.title}
@@ -43,7 +43,7 @@ class Saved extends React.Component {
                 description={book.description}
                 image={book.image}
                 link={book.link}
-                onClick={this.deleteBook(book.id)}
+                onClick={() => this.deleteBook(book._id)}
                 buttonText="Delete"
               />
             </div>

@@ -15,7 +15,7 @@ function BookResult(props) {
             <button 
                 className="btn waves-effect waves-light" 
                 onClick={onClick}
-                id={id}
+                data-id={id}
             >{buttonText}</button>
 
         </article>

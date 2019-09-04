@@ -49,7 +49,6 @@ class Search extends React.Component {
       this.setState({ books: results.data.items });
       console.log({books: results.data.items});
     })
-    // .then( this.loadSavedBooks() )
     .catch(err => console.log(err));
   };
 
@@ -69,13 +68,13 @@ class Search extends React.Component {
         {this.state.books.map(book => (
           <div className="container" key={book.id ? book.id : book.googleBookId}>
             <BookResult 
-              id={book.id}
+              id={book.volumeInfo.id}
               title={book.volumeInfo.title}
               authors={book.volumeInfo.authors}
               description={book.volumeInfo.description}
               image={book.volumeInfo.imageLinks.thumbnail}
               link={book.volumeInfo.infoLink}
-              onClick={this.saveBook(book.id)}
+              onClick={() => this.saveBook(book.id)}
               buttonText="Save"
             />
             {/* <BookResult 
