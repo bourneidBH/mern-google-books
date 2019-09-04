@@ -31,16 +31,6 @@ class Search extends React.Component {
     }).catch(err => console.log(err));
   };
 
-  // Method to Query the database to GET all the books in the database.
-  loadSavedBooks = () => {
-    API.getSavedBooks()
-      .then(res => {
-        this.setState({books: res.data});
-        console.log("saved books: ", res.data);
-      })
-      .catch(err => console.log(err))
-  };
-
   handleFormSubmit = event => {
     event.preventDefault();
 
@@ -77,16 +67,6 @@ class Search extends React.Component {
               onClick={() => this.saveBook(book.id)}
               buttonText="Save"
             />
-            {/* <BookResult 
-              id={book.id}
-              title={book.title}
-              authors={book.authors}
-              description={book.description}
-              image={book.image}
-              link={book.link}
-              onClick={this.saveBook(book.id)}
-              buttonText="Save"
-            /> */}
 
           </div>
 

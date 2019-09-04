@@ -35,7 +35,7 @@ class Saved extends React.Component {
           subhead="View or delete saved books"
         />
         {this.state.books.map(book => (
-            <div className="container" key={book.id ? book._id : book.googleBookId}>
+            <div className="container" key={book._id}>
               <BookResult 
                 id={book._id}
                 title={book.title}
