@@ -2,6 +2,8 @@
 
 This full stack MERN app allows users to search for books and save them to a reading list. Books can also be deleted from the list.
 
+**Deployed App:** https://stormy-mountain-77179.herokuapp.com/
+
 ## Technologies used:
 * MonogDB/Mongoose
 * Express
