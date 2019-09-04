@@ -19,7 +19,7 @@ class Search extends React.Component {
     API.saveBook({
       googleBookId: book.volumeInfo.id,
       title: book.volumeInfo.title,
-      authors: book.volumeInfo.authors,
+      authors: book.volumeInfo.authors.join(", "),
       description: book.volumeInfo.description,
       image: book.volumeInfo.imageLinks.thumbnail,
       link: book.volumeInfo.infoLink,
@@ -60,7 +60,7 @@ class Search extends React.Component {
             <BookResult 
               id={book.volumeInfo.id}
               title={book.volumeInfo.title}
-              authors={book.volumeInfo.authors}
+              authors={book.volumeInfo.authors.join(", ")}
               description={book.volumeInfo.description}
               image={book.volumeInfo.imageLinks.thumbnail}
               link={book.volumeInfo.infoLink}
