@@ -29,6 +29,13 @@ This full-stack React app has two package.json files, one in the root directory 
 * Changing pages between search and saved is handled with react-router-dom switch.
 * Both the "Search" and "Saved" pages use the same components with different banner text, button text, and button functions passed to the component as props.
 
+## Deployment
+* Run npm run build
+* To deploy on Heroku run heroku create
+* On your Heroku account dashboard, find the app and add-on mLab Mongo
+* In the mLab dashboard add a database user
+* In you terminal run git push heroku master 
+
 <img src="client/public/images/google-books-search.jpg" alt="home page" />
 
 
