@@ -4,6 +4,13 @@ This full stack MERN app allows users to search for books and save them to a rea
 
 **Deployed App:** https://stormy-mountain-77179.herokuapp.com/
 
+## Getting started:
+This full-stack React app has two package.json files, one in the root directory and one in the client folder. To start a development server, clone the repo and then run npm install from both the root and client. Then start up MongoDB by running the command mongod in a new terminal window. Run npm start to start the development server.
+
+### Prerequisites:
+* Install MongoDB: https://www.mongodb.com/download-center#community and configure according to the directions for your operating system.
+* Sign up for a Google Books API key: https://console.developers.google.com/apis/credentials 
+
 ## Technologies used:
 * MonogDB/Mongoose
 * Express

@@ -13,7 +13,7 @@ function BookResult(props) {
             <p>{description}</p>
             <a href={link} target="_blank" rel="noopener noreferrer"><button className="btn waves-effect waves-light">View</button></a>
             <button 
-                className="btn waves-effect waves-light" 
+                className="btn waves-effect waves-light modal-trigger" 
                 onClick={onClick}
                 data-id={id}
             >{buttonText}</button>
