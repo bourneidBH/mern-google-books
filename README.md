@@ -34,7 +34,7 @@ This full-stack React app has two package.json files, one in the root directory 
 * To deploy on Heroku run heroku create
 * On your Heroku account dashboard, find the app and add-on mLab Mongo
 * In the mLab dashboard add a database user
-* In you terminal run git push heroku master 
+* In your terminal run git push heroku master 
 
 <img src="client/public/images/google-books-search.jpg" alt="home page" />
 

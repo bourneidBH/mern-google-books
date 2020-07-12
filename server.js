@@ -15,9 +15,9 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // If deployed, use the deployed database. Otherwise use the local database
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://mern-books:pswmernbooks1@ds217438.mlab.com:17438/heroku_x0n2wcw5" || "mongodb://localhost:27017/googleBooks";
+const DB_URI = process.env.DB_URI || "mongodb://mern-books:pswmernbooks1@ds217438.mlab.com:17438/heroku_x0n2wcw5" || "mongodb://localhost:27017/googleBooks";
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(DB_URI, { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
 // Start the API server
