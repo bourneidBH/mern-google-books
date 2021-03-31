@@ -7,7 +7,7 @@ function BookResult(props) {
     return (
 
         <article id={id}>
-            <img src={image} alt={title} className="thumbnail" />
+            {/* {image && <img src={image} alt={title} className="thumbnail" />} */}
             <h5>{title}</h5>
             <p>By: {authors}</p>
             <p>{description}</p>

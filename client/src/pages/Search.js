@@ -55,14 +55,15 @@ class Search extends React.Component {
           handleFormSubmit={this.handleFormSubmit}
         />
         
-        {this.state.books.map(book => (
-          <div className="container" key={book.id ? book.id : book.googleBookId}>
+        {this.state.books.map((book) => {
+          return (
+            <div className="container" key={book.id ? book.id : book.googleBookId}>
             <BookResult 
               id={book.volumeInfo.id}
               title={book.volumeInfo.title}
               authors={book.volumeInfo.authors}
               description={book.volumeInfo.description}
-              image={book.volumeInfo.imageLinks.thumbnail}
+              // image={book.volumeInfo.imageLinks.thumbnail}
               link={book.volumeInfo.infoLink}
               onClick={() => this.saveBook(book.id)}
               buttonText="Save"
@@ -70,7 +71,9 @@ class Search extends React.Component {
 
           </div>
 
-        ))}
+          )
+
+        })}
       </div>
 
     );
