@@ -41,7 +41,7 @@ class Saved extends React.Component {
                 title={book.title}
                 authors={book.authors}
                 description={book.description}
-                image={book.image}
+                // image={book.image}
                 link={book.link}
                 onClick={() => this.deleteBook(book._id)}
                 buttonText="Delete"
