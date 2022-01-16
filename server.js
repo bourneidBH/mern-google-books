@@ -17,8 +17,7 @@ app.use(routes);
 // If deployed, use the deployed database. Otherwise use the local database
 const DB_URI = process.env.DB_URI || "mongodb://localhost:27017/googleBooks";
 
-mongoose.connect(DB_URI, { useNewUrlParser: true });
-mongoose.set('useFindAndModify', false);
+mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Start the API server
 app.listen(PORT, function() {

@@ -25,14 +25,14 @@
   },
   "homepage": "https://github.com/BourneID7/mern-google-books",
   "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "express": "^4.16.3",
+    "axios": "^0.24.0",
+    "express": "^4.17.2",
     "if-env": "^1.0.4",
     "kind-of": "^6.0.3",
-    "mongoose": "^5.3.16"
+    "mongoose": "^6.1.6"
   }
 }
