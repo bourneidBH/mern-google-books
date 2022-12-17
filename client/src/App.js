@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import "./styles.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
@@ -9,21 +9,19 @@ import Navbar from "./components/Navbar";
 
 function App() {
 
-    return (
-      <Router>
-        <div>
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Search} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/api/books" component={Saved} />
-            <Route exact path="/api/books/:id" component={Saved} />
-            <Route exact path="/saved/" component={Saved} />
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
+  return (
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Search />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/api/books" element={<Saved />} />
+        <Route path="/api/books/:id" element={<Saved />} />
+        <Route path="/saved/" element={<Saved />} />
+        <Route element={<NoMatch />} />
+      </Routes>
+    </div>
+  );
+}
 
 export default App;

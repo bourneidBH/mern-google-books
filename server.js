@@ -15,9 +15,10 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // If deployed, use the deployed database. Otherwise use the local database
-const DB_URI = process.env.DB_URI || "mongodb://localhost:27017/googleBooks";
+const DB_URI = process.env.DB_URI || "mongodb://127.0.0.1:27017/googleBooks";
 
-mongoose.connect(DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(DB_URI);
+mongoose.set("strictQuery", false)
 
 // Start the API server
 app.listen(PORT, function() {
